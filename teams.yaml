@@ -1,0 +1,103 @@
+teams:
+    ABS:
+        name: Abingdon School
+        rookie: false
+    BPV:
+        name: Barton Peveril College
+        rookie: false
+    BRK:
+        name: Brockenhurst College
+        rookie: false
+    CAG:
+        name: Calday Grange Grammar School
+        rookie: false
+    CAT:
+        name: CATS College Cambridge
+        rookie: false
+    CCR:
+        name: Cirencester College
+        rookie: false
+    CLY:
+        name: The College of Richard Collyer
+        rookie: false
+    CNN:
+        name: (as KDE)	Code Ninjas Newbury
+        rookie: false
+    CRB:
+        name: Cranbrook School
+        rookie: false
+    ELC:
+        name: Eltham College
+        rookie: false
+    GDC:
+        name: Godalming College
+        rookie: false
+    HAB:
+        name: Haberdashers School
+        rookie: false
+    HAM:
+        name: Hampton School
+        rookie: false
+    HEA:
+        name: Hertswood Academy
+        rookie: false
+    HRS:
+        name: Hills Road Sixth Form College
+        rookie: false
+    HSO:
+        name: Headington School
+        rookie: false
+    HWM:
+        name: Harris Westminster Sixth Form
+        rookie: false
+    HZW:
+        name: Hazelwick School
+        rookie: false
+    KEG:
+        name: King Edward VI Grammar School (Chelmsford)
+        rookie: false
+    LGS:
+        name: Langley Grammar School
+        rookie: true
+    MAI:
+        name: Gymnasium Markt Indersdorf
+        rookie: false
+    PSC:
+        name: Peter Symonds College
+        rookie: false
+    QMC:
+        name: Queen Mary's College
+        rookie: false
+    RCE:
+        name: Ripley St Thomas Church of England Academy
+        rookie: true
+    RGS:
+        name: Royal Grammar School Guildford
+        rookie: false
+    RTS:
+        name: Ruthin School
+        rookie: false
+    SCT:
+        name: Silcoates School
+        rookie: false
+    SHB:
+        name: Sherborne School
+        rookie: true
+    SOG:
+        name: Saint Olaves
+        rookie: false
+    TFS:
+        name: Tiffin School
+        rookie: true
+    TLC:
+        name: The Ladies' College, Guernsey
+        rookie: false
+    UTS:
+        name: UTC Swindon
+        rookie: true
+    WMC:
+        name: Westminster City School
+        rookie: true
+    WGS:
+        name: Wisbech Grammar School
+        rookie: false
