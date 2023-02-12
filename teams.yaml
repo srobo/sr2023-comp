@@ -50,9 +50,6 @@ teams:
     HWM:
         name: Harris Westminster Sixth Form
         rookie: false
-    HZW:
-        name: Hazelwick School
-        rookie: false
     KEG:
         name: King Edward VI Grammar School (Chelmsford)
         rookie: false
@@ -92,9 +89,6 @@ teams:
     TLC:
         name: The Ladies' College, Guernsey
         rookie: false
-    UTS:
-        name: UTC Swindon
-        rookie: true
     WMC:
         name: Westminster City School
         rookie: true
