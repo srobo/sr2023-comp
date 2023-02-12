@@ -1,0 +1,5 @@
+/.update-lock
+/.update-pls
+
+__pycache__
+*.pyc
