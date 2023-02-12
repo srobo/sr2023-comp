@@ -1,0 +1,13 @@
+arenas:
+  main:
+    display_name: ''
+
+corners:
+  0:
+    colour: '#00ff00'
+  1:
+    colour: '#ff6600'
+  2:
+    colour: '#ff00ff'
+  3:
+    colour: '#ffff00'

@@ -1,0 +1,43 @@
+# TODO: align with real layout
+teams:
+  - name: level-2-bar
+    display_name: SUSU Level 2 Bar
+    teams:
+      - ABS
+      - BPV
+      - BRK
+      - CAG
+      - CAT
+      - CCR
+      - CLY
+      - CNN
+      - CRB
+      - ELC
+      - GDC
+      - HAB
+      - HAM
+      - HEA
+      - HRS
+      - HSO
+      - HWM
+      - KEG
+      - LGS
+      - MAI
+      - PSC
+      - QMC
+      - RCE
+      - RGS
+      - RTS
+      - SCT
+      - SHB
+      - SOG
+      - TFS
+      - TLC
+      - WMC
+      - WGS
+  - name: level-3-north
+    display_name: SUSU Level 3 North
+    teams: []
+  - name: level-3-south
+    display_name: SUSU Level 3 South
+    teams: []

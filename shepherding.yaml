@@ -1,0 +1,11 @@
+# TODO: match the colours to the actual colours in SUSU
+shepherds:
+  - name: "Shepherd Level 2 Bar"
+    colour: 'palegreen'
+    regions: [level-2-bar]
+  - name: "Shepherd Level 3 South"
+    colour: 'lightpink'
+    regions: [level-3-south]
+  - name: "Shepherd Level 3 North"
+    colour: 'lemonchiffon'
+    regions: [level-3-north]
