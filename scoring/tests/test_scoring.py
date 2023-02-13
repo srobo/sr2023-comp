@@ -227,6 +227,8 @@ class ScorerTests(unittest.TestCase):
             self.zone_tokens,
         )
 
+    # Impossible scenarios
+
     def test_left_scoring_zone_but_absent(self):
         self.teams_data = {
             'ABC': {'zone': 0, 'present': False, 'left_scoring_zone': True},
