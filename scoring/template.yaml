@@ -1,0 +1,40 @@
+arena_id: main
+arena_zones:
+  0:
+    # Tokens which were in the zone at the end. Valid tokens are B, S & G.
+    tokens: GG
+  1:
+    tokens: ''
+  2:
+    tokens: S
+  3:
+    tokens: ''
+  other:
+    tokens: ''
+match_number: 0
+teams:
+  TLA0:
+    disqualified: false
+    left_scoring_zone: true
+    present: true
+    # Tokens which were in the robot at the end. Valid tokens are B, S & G.
+    robot_tokens: BB
+    zone: 0
+  TLA1:
+    disqualified: true
+    left_scoring_zone: false
+    present: false
+    robot_tokens: ''
+    zone: 1
+  TLA2:
+    disqualified: false
+    left_scoring_zone: false
+    present: false
+    robot_tokens: S
+    zone: 2
+  TLA3:
+    disqualified: false
+    left_scoring_zone: false
+    present: false
+    robot_tokens: ''
+    zone: 3
