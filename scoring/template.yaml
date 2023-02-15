@@ -8,9 +8,10 @@ arena_zones:
   2:
     tokens: S
   3:
-    tokens: ''
-  other:
-    tokens: ''
+    tokens: >-
+      BBBBB BBBBB BBBBB BBB
+      SSS SS SS SSS
+      GG
 match_number: 0
 teams:
   TLA0:
