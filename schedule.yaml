@@ -29,40 +29,40 @@ delays: []
 #
 match_periods:
   league:
-  - start_time: 2022-02-25 13:10:00+01:00
+  - start_time: 2023-02-25 13:10:00+01:00
     # Technically we stop at 15:00, but to force the next match
     # into the next period we claim to finish a bit earlier.
-    end_time: 2022-02-25 14:56:00+01:00
-    max_end_time: 2022-02-25 16:00:00+01:00
+    end_time: 2023-02-25 14:56:00+01:00
+    max_end_time: 2023-02-25 16:00:00+01:00
     description: Virtual league
 
 #
-  - start_time: 2022-04-01 13:30:00+01:00
+  - start_time: 2023-04-01 13:30:00+01:00
     # Technically we stop at 16:30, but to force the next match
     # into the next period we claim to finish a bit earlier.
-    end_time: 2022-04-01 16:26:00+01:00
-    max_end_time: 2022-04-01 16:30:00+01:00
+    end_time: 2023-04-01 16:26:00+01:00
+    max_end_time: 2023-04-01 16:30:00+01:00
     description: Saturday league, afternoon
 
 #
-  - start_time: 2022-04-02 09:30:00+01:00
+  - start_time: 2023-04-02 09:30:00+01:00
     # Technically we stop at 12:30, but to force the next match
     # into the next period we claim to finish a bit earlier.
-    end_time: 2022-04-02 12:26:00+01:00
-    max_end_time: 2022-04-02 12:35:00+01:00
+    end_time: 2023-04-02 12:26:00+01:00
+    max_end_time: 2023-04-02 12:35:00+01:00
     description: Sunday league, morning
 
 #
 # There is a group photograph scheduled for 15:00
 #
   knockout:
-  - start_time: 2022-04-02 13:30:00+01:00
-    end_time: 2022-04-02 14:55:00+01:00
+  - start_time: 2023-04-02 13:30:00+01:00
+    end_time: 2023-04-02 14:55:00+01:00
     description: Knockouts
 
 # Scheduled time for the finals tie-breaker, if any
 # This is an absolute value and ignores the delay values
-tiebreaker: 2022-04-02 15:00:00+01:00
+tiebreaker: 2023-04-02 15:00:00+01:00
 
 league:
   # Extra spacing before an arbitrary set of matches
