@@ -47,3 +47,99 @@ matches:
     - ELC
     - SRX
     - SRY
+  8:
+    main:
+    - CLY
+    - HAB
+    - SRX
+    - SRY
+  9:
+    main:
+    - ELC
+    - HAB
+    - SRX
+    - SRY
+  10:
+    main:
+    - CLY
+    - ELC
+    - HAB
+    - SRX
+  11:
+    main:
+    - CLY
+    - ELC
+    - HAB
+    - SRY
+  12:
+    main:
+    - CLY
+    - ELC
+    - SRX
+    - SRY
+  13:
+    main:
+    - CLY
+    - HAB
+    - SRX
+    - SRY
+  14:
+    main:
+    - ELC
+    - HAB
+    - SRX
+    - SRY
+  15:
+    main:
+    - CLY
+    - ELC
+    - HAB
+    - SRX
+  16:
+    main:
+    - CLY
+    - ELC
+    - HAB
+    - SRY
+  17:
+    main:
+    - CLY
+    - ELC
+    - SRX
+    - SRY
+  18:
+    main:
+    - CLY
+    - HAB
+    - SRX
+    - SRY
+  19:
+    main:
+    - ELC
+    - HAB
+    - SRX
+    - SRY
+  20:
+    main:
+    - CLY
+    - ELC
+    - HAB
+    - SRX
+  21:
+    main:
+    - CLY
+    - ELC
+    - HAB
+    - SRY
+  22:
+    main:
+    - CLY
+    - ELC
+    - SRX
+    - SRY
+  23:
+    main:
+    - CLY
+    - HAB
+    - SRX
+    - SRY
