@@ -30,11 +30,7 @@ delays: []
 match_periods:
   league:
   - start_time: 2023-02-18 13:10:00+00:00
-    # Technically we wanted to stop at 15:00, but allowing for some overrun we
-    # need to extend beyond that. Claim to end at a point after the last match
-    # has actually started so we force the next match into the next period we
-    # claim to finish a bit earlier.
-    end_time: 2023-02-18 15:16:00+00:00
+    end_time: 2023-02-18 13:56:00+00:00
     max_end_time: 2023-02-18 16:00:00+00:00
     description: Virtual league
 
