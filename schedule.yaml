@@ -68,14 +68,7 @@ league:
   # Extra spacing before an arbitrary set of matches
   # This value is ignored for matches which occur at the start of a period
   # since no additional time is needed there.
-  extra_spacing:
-  # Extra spacing which appears before (almost) everyone's first match
-  # Matches which fall at the start of their period are ignored
-  - match_numbers: 0-6
-    duration: 240
-  # Space for a shift change on Saturday afternoon
-  - match_numbers: '31'
-    duration: 240
+  extra_spacing: []
 #
 knockout:
   round_spacing: 300 # Delay between knockout rounds
