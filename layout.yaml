@@ -3,38 +3,11 @@ teams:
   - name: level-2-bar
     display_name: SUSU Level 2 Bar
     teams:
-      - ABS
-      - BPV
-      - BRK
-      - CAG
-      - CAT
-      - CCR
       - CLY
-      - CNN
-      - CRB
       - ELC
-      - GDC
       - HAB
-      - HAM
-      - HEA
-      - HRS
-      - HSO
-      - HWM
-      - KEG
-      - LGS
-      - MAI
-      - PSC
-      - QMC
-      - RCE
-      - RGS
-      - RTS
-      - SCT
-      - SHB
-      - SOG
-      - TFS
-      - TLC
-      - WMC
-      - WGS
+      - SRX
+      - SRY
   - name: level-3-north
     display_name: SUSU Level 3 North
     teams: []

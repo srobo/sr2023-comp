@@ -1,205 +1,49 @@
 matches:
   0:
     main:
-    -
-    - ABS
-    - BPV
-    - BRK
+    - CLY
+    - ELC
+    - HAB
+    - SRX
   1:
     main:
-    -
-    - CAG
-    - CAT
-    - CCR
+    - CLY
+    - ELC
+    - HAB
+    - SRY
   2:
     main:
     - CLY
-    - CNN
-    - CRB
     - ELC
+    - SRX
+    - SRY
   3:
     main:
-    - GDC
+    - CLY
     - HAB
-    - HAM
-    - HEA
+    - SRX
+    - SRY
   4:
     main:
-    - HRS
-    - BPV
-    - HSO
-    - HWM
+    - ELC
+    - HAB
+    - SRX
+    - SRY
   5:
     main:
-    - HAB
+    - CLY
     - ELC
-    - KEG
-    - LGS
+    - HAB
+    - SRX
   6:
     main:
-    - HWM
-    - BRK
-    - HEA
-    - CNN
+    - CLY
+    - ELC
+    - HAB
+    - SRY
   7:
     main:
-    - MAI
-    - PSC
-    - QMC
-    - CAG
-  8:
-    main:
-    - HAM
-    -
-    - RCE
-    - RGS
-  9:
-    main:
-    - KEG
-    - CAT
-    - RTS
-    - SCT
-  10:
-    main:
-    - LGS
-    - GDC
-    - HRS
-    - SHB
-  11:
-    main:
-    - SOG
-    - HSO
-    - TFS
-    - TLC
-  12:
-    main:
-    - RTS
-    - RGS
-    - LGS
-    - WMC
-  13:
-    main:
-    - ABS
-    - HAM
-    - WGS
     - CLY
-  14:
-    main:
-    - HEA
-    - WMC
-    - PSC
-    - WGS
-  15:
-    main:
-    - BRK
-    - WGS
-    - SHB
-    - QMC
-  16:
-    main:
-    - CRB
-    - RCE
-    - MAI
-    -
-  17:
-    main:
-    - SCT
-    - LGS
-    -
-    - HRS
-  18:
-    main:
-    - TLC
-    -
-    - WMC
-    - ABS
-  19:
-    main:
-    - TFS
-    - CLY
-    - SCT
-    - MAI
-  20:
-    main:
-    - WGS
-    - KEG
-    - HWM
-    - HSO
-  21:
-    main:
-    - CAG
-    - SCT
-    - GDC
-    - RCE
-  22:
-    main:
-    - BPV
-    - SOG
-    - CLY
-    - KEG
-  23:
-    main:
-    - RCE
-    - HWM
-    - CCR
-    - TFS
-  24:
-    main:
-    - CAT
-    - TLC
-    - BRK
-    - PSC
-  25:
-    main:
-    - CNN
-    - HRS
-    - RGS
-    - RTS
-  26:
-    main:
-    - CCR
-    - SHB
     - ELC
-    - BPV
-  27:
-    main:
-    - HSO
-    - MAI
-    -
-    - HAB
-  28:
-    main:
-    - ELC
-    - CRB
-    - CAG
-    -
-  29:
-    main:
-    - SHB
-    - HEA
-    - CNN
-    - SOG
-  30:
-    main:
-    - RGS
-    - QMC
-    - TLC
-    - GDC
-  31:
-    main:
-    - WMC
-    - TFS
-    - SOG
-    - CRB
-  32:
-    main:
-    - QMC
-    - CCR
-    - HAB
-    - CAT
-  33:
-    main:
-    - PSC
-    - RTS
-    - ABS
-    - HAM
+    - SRX
+    - SRY
