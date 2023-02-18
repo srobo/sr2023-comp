@@ -95,7 +95,7 @@
 <rect height="120" width="120" stroke="#000" y="240" x="240" stroke-width="1" fill="#f4f3ff" />
 {% endblock %}
 
-{% block svg_size %}height="820" width="600"{% endblock %}
+{% block svg_size %}height="850" width="600"{% endblock %}
 
 {% block zone_other %}
 <foreignObject x="250" y="250" height="100" width="100">
@@ -111,19 +111,22 @@
 {{ input_robot_tokens_wider(310, 710, 2) }}
 {{ input_robot_tokens_wider(10, 710, 3) }}
 
-<foreignObject x="150" y="750" height="100" width="300">
-  <h2 style="text-align: center;">Token Totals</h2>
-  <div class="js-summary" style="display: flex; flex-wrap: nowrap; justify-content: space-evenly;">
+<foreignObject x="50" y="750" height="100" width="500">
+  <h2 style="text-align: center;">Token over-counts</h2>
+  <div class="js-summary" style="display: flex; flex-wrap: nowrap; justify-content: space-evenly; max-width: 300px; margin: 0 auto;">
     <div>
-      B: <strong id="bronze-total">&hellip;</strong> / 20
+      B: <strong id="bronze-overcount">&hellip;</strong>
     </div>
     <div>
-      S: <strong id="silver-total">&hellip;</strong> / 12
+      S: <strong id="silver-overcount">&hellip;</strong>
     </div>
     <div>
-      G: <strong id="gold-total">&hellip;</strong> / 4
+      G: <strong id="gold-overcount">&hellip;</strong>
     </div>
   </div>
+  <p style="text-align: center; margin-top: 0.3em;">
+    <small>These indicate a token in more than one robot or zone</small>
+  </p>
 </foreignObject>
 {% endblock %}
 
@@ -171,9 +174,9 @@ var valid_token_regex = /^[BSG]*$/;
         totals['S'] = totals['S'] + x['S'];
         totals['G'] = totals['G'] + x['G'];
       })
-      document.getElementById('bronze-total').innerText = totals['B'];
-      document.getElementById('silver-total').innerText = totals['S'];
-      document.getElementById('gold-total').innerText = totals['G'];
+      document.getElementById('bronze-overcount').innerText = Math.max(0, totals['B'] - 20);
+      document.getElementById('silver-overcount').innerText = Math.max(0, totals['S'] - 12);
+      document.getElementById('gold-overcount').innerText = Math.max(0, totals['G'] - 4);
     }
 
     // tokenInputs loaded by the base template
