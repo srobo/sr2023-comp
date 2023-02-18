@@ -31,10 +31,10 @@
 {% endmacro %}
 
 {% macro input_zone_tokens_wider(x, y, corner) %}
-<foreignObject x="{{ x + 5 }}" y="{{ y }}" width="120" height="30">
-  <label for="tokens_{{ corner }}">Zone Tokens</label>
+<foreignObject x="{{ x + 5 }}" y="{{ y }}" width="70" height="30">
+  <label for="tokens_{{ corner }}">Tokens</label>
 </foreignObject>
-<foreignObject x="{{ x + 125 }}" y="{{ y }}" width="150" height="30">
+<foreignObject x="{{ x + 75 }}" y="{{ y }}" width="200" height="30">
   <input
     class="tokens"
     type="text"
@@ -45,7 +45,7 @@
     onkeyup="custom_token_input_change(this);"
   />
 </foreignObject>
-<foreignObject x="{{ x + 125 }}" y="{{ y + 40 }}" width="150" height="30">
+<foreignObject x="{{ x + 75 }}" y="{{ y + 40 }}" width="200" height="30">
   {{ js_tokens_summary('zone', corner) }}
 </foreignObject>
 {% endmacro %}
