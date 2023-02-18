@@ -111,6 +111,32 @@ class ScorerTests(unittest.TestCase):
             self.zone_tokens,
         )
 
+    def test_tokens_shared_several_zones(self):
+        self.zone_tokens[0] += 'G'
+        self.zone_tokens[2] += 'G'
+
+        self.assertScores(
+            {'ABC': 111, 'DEF': 81},
+            {},
+            self.zone_tokens,
+        )
+
+    def test_token_shared_two_robots(self):
+        # The Gold token which was in zone 0
+        self.zone_tokens[0] = self.zone_tokens[0].replace('G', '')
+
+        # is actually being held by both ABC and DEF
+        robot_tokens = {
+            'ABC': 'G',
+            'DEF': 'G',
+        }
+
+        self.assertScores(
+            {'ABC': 61, 'DEF': 91},
+            robot_tokens,
+            self.zone_tokens,
+        )
+
     def test_tokens_in_robot(self):
         self.zone_tokens[0] = 'B' * 4 + 'S' * 2
         self.assertScores(
@@ -205,6 +231,11 @@ class ScorerTests(unittest.TestCase):
     # Extra tokens
 
     def test_too_many_tokens_single_zone(self):
+        # Remove all the other gold tokens so it's clear what we're testing
+        self.zone_tokens = {
+            x: y.replace('G', '') for x, y in self.zone_tokens.items()
+        }
+
         self.zone_tokens[0] += 'G' * 5
         self.assertInvalidScoresheet(
             {},
