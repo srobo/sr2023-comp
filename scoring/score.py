@@ -34,10 +34,16 @@ class Scorer:
             robot_tokens = info['robot_tokens']
             zone_tokens = self._arena_data[info['zone']]['tokens']
 
-            points = sum(POINTS_IN_ZONE[y]
-                         for x in zone_tokens if (y := x.strip()))
-            points += sum(POINTS_IN_ROBOT[y]
-                          for x in robot_tokens if (y := x.strip()))
+            points = sum(
+                POINTS_IN_ZONE[y]
+                for x in zone_tokens
+                if (y := x.strip())
+            )
+            points += sum(
+                POINTS_IN_ROBOT[y]
+                for x in robot_tokens
+                if (y := x.strip())
+            )
 
             if info.get('left_scoring_zone', False):
                 points += 1
