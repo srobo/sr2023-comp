@@ -25,7 +25,7 @@
     id="robot_tokens_{{ corner }}"
     name="robot_tokens_{{ corner }}"
     value="{{ request.form.get('robot_tokens_{}'.format(corner)) | empty_if_none }}"
-    onkeyup="token_input_change(this);"
+    onkeyup="custom_token_input_change(this);"
   />
 </foreignObject>
 {% endmacro %}
@@ -90,7 +90,7 @@
 <rect height="120" width="120" stroke="#000" y="240" x="240" stroke-width="1" fill="#f4f3ff" />
 {% endblock %}
 
-{% block svg_size %}height="750" width="600"{% endblock %}
+{% block svg_size %}height="820" width="600"{% endblock %}
 
 {% block zone_other %}
 <foreignObject x="250" y="250" height="100" width="100">
@@ -105,6 +105,21 @@
 {{ input_robot_tokens_wider(310, 660, 1) }}
 {{ input_robot_tokens_wider(310, 710, 2) }}
 {{ input_robot_tokens_wider(10, 710, 3) }}
+
+<foreignObject x="150" y="750" height="100" width="300">
+  <h2 style="text-align: center;">Token Totals</h2>
+  <div class="js-summary" style="display: flex; flex-wrap: nowrap; justify-content: space-evenly;">
+    <div>
+      B: <strong id="bronze-total">&hellip;</strong> / 20
+    </div>
+    <div>
+      S: <strong id="silver-total">&hellip;</strong> / 12
+    </div>
+    <div>
+      G: <strong id="gold-total">&hellip;</strong> / 4
+    </div>
+  </div>
+</foreignObject>
 {% endblock %}
 
 {% block valid_token_regex %}
@@ -114,18 +129,35 @@ var valid_token_regex = /^[BSG]*$/;
 {% block script %}
   {{ super() }}
   <script type="text/javascript">
+    var allTotals = {};
+
     var custom_token_input_change = function(input) {
       token_input_change(input);
 
-      var totals = {'B': 0, 'S': 0, 'G': 0};
+      // Update the overall totals for this input
+      var inputTotals = {'B': 0, 'S': 0, 'G': 0};
       Array.from(input.value).forEach(function (e, i) {
-        totals[e] = totals[e] + 1;
+        inputTotals[e] = inputTotals[e] + 1;
       })
 
       var totalsTemplate = input.dataset.totalsTemplate;
-      document.getElementById(totalsTemplate.replace('KIND', 'bronze')).innerText = totals['B'];
-      document.getElementById(totalsTemplate.replace('KIND', 'silver')).innerText = totals['S'];
-      document.getElementById(totalsTemplate.replace('KIND', 'gold')).innerText = totals['G'];
+      if (totalsTemplate !== undefined) {
+        document.getElementById(totalsTemplate.replace('KIND', 'bronze')).innerText = inputTotals['B'];
+        document.getElementById(totalsTemplate.replace('KIND', 'silver')).innerText = inputTotals['S'];
+        document.getElementById(totalsTemplate.replace('KIND', 'gold')).innerText = inputTotals['G'];
+      }
+
+      // Update the overall totals
+      allTotals[input.id] = inputTotals;
+      var totals = {'B': 0, 'S': 0, 'G': 0};
+      Object.values(allTotals).forEach(function (x) {
+        totals['B'] = totals['B'] + x['B'];
+        totals['S'] = totals['S'] + x['S'];
+        totals['G'] = totals['G'] + x['G'];
+      })
+      document.getElementById('bronze-total').innerText = totals['B'];
+      document.getElementById('silver-total').innerText = totals['S'];
+      document.getElementById('gold-total').innerText = totals['G'];
     }
 
     // tokenInputs loaded by the base template
