@@ -140,6 +140,17 @@ var valid_token_regex = /^[BSG]*$/;
         inputTotals[e] = inputTotals[e] + 1;
       })
 
+      // A single input cannot have more tokens than are in the arena
+      if (
+        inputTotals['B'] > 20 ||
+        inputTotals['S'] > 12 ||
+        inputTotals['G'] > 4
+      ) {
+        input.className = 'invalid';
+      } else {
+        input.className = '';
+      }
+
       var totalsTemplate = input.dataset.totalsTemplate;
       if (totalsTemplate !== undefined) {
         document.getElementById(totalsTemplate.replace('KIND', 'bronze')).innerText = inputTotals['B'];
