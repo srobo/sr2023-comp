@@ -25,12 +25,8 @@
     id="robot_tokens_{{ corner }}"
     name="robot_tokens_{{ corner }}"
     value="{{ request.form.get('robot_tokens_{}'.format(corner)) | empty_if_none }}"
-    data-totals-template="robot-KIND-{{ corner }}"
-    onkeyup="custom_token_input_change(this);"
+    onkeyup="token_input_change(this);"
   />
-</foreignObject>
-<foreignObject x="{{ x + 125 }}" y="{{ y + 40 }}" width="150" height="30">
-  {{ js_tokens_summary('robot', corner) }}
 </foreignObject>
 {% endmacro %}
 
@@ -94,7 +90,7 @@
 <rect height="120" width="120" stroke="#000" y="240" x="240" stroke-width="1" fill="#f4f3ff" />
 {% endblock %}
 
-{% block svg_size %}height="810" width="600"{% endblock %}
+{% block svg_size %}height="750" width="600"{% endblock %}
 
 {% block zone_other %}
 <foreignObject x="250" y="250" height="100" width="100">
@@ -107,8 +103,8 @@
 
 {{ input_robot_tokens_wider(10, 660, 0) }}
 {{ input_robot_tokens_wider(310, 660, 1) }}
-{{ input_robot_tokens_wider(310, 740, 2) }}
-{{ input_robot_tokens_wider(10, 740, 3) }}
+{{ input_robot_tokens_wider(310, 710, 2) }}
+{{ input_robot_tokens_wider(10, 710, 3) }}
 {% endblock %}
 
 {% block valid_token_regex %}
