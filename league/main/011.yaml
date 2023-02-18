@@ -7,7 +7,7 @@ arena_zones:
   2:
     tokens: BSBBSSBBBSSBBS
   3:
-    tokens: G
+    tokens: GG
   other:
     tokens: ''
 match_number: 11
