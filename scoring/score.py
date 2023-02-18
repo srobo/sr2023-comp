@@ -68,7 +68,7 @@ class Scorer:
         extra = set(all_tokens) - set(POINTS_IN_ZONE.keys())
         if extra:
             raise InvalidScoresheetException(
-                f"Invalid can state: {extra!r}. "
+                f"Invalid token type: {extra!r}. "
                 f"Must be one of: {', '.join(POINTS_IN_ZONE.keys())}",
             )
 
