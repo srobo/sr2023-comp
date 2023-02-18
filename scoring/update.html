@@ -2,7 +2,7 @@
 
 {% macro input_robot_tokens_wider(x, y, corner) %}
 <foreignObject x="{{ x }}" y="{{ y }}" width="120" height="30">
-  <label for="robot_tokens_{{ corner }}">Robot Tokens</label>
+  <label for="robot_tokens_{{ corner }}">Robot {{ corner }}</label>
 </foreignObject>
 <foreignObject x="{{ x + 125 }}" y="{{ y }}" width="150" height="30">
   <input
@@ -39,7 +39,6 @@
 {% block zone_0 %}
 {{ input_tla(70, 50, 0) }}
 {{ input_zone_tokens_wider(10, 95, 0) }}
-{{ input_robot_tokens_wider(10, 130, 0) }}
 {{ input_present(70, 175, 0) }}
 {{ input_left_scoring_zone(18, 210, 0) }}
 {{ input_disqualified(30, 245, 0) }}
@@ -48,7 +47,6 @@
 {% block zone_1 %}
 {{ input_tla(365, 50, 1) }}
 {{ input_zone_tokens_wider(310, 95, 1) }}
-{{ input_robot_tokens_wider(310, 130, 1) }}
 {{ input_present(445, 175, 1) }}
 {{ input_left_scoring_zone(393, 210, 1) }}
 {{ input_disqualified(405, 245, 1) }}
@@ -57,7 +55,6 @@
 {% block zone_2 %}
 {{ input_tla(380, 320, 2) }}
 {{ input_zone_tokens_wider(310, 365, 2) }}
-{{ input_robot_tokens_wider(310, 400, 2) }}
 {{ input_present(405, 445, 2) }}
 {{ input_left_scoring_zone(353, 480, 2) }}
 {{ input_disqualified(365, 515, 2) }}
@@ -66,7 +63,6 @@
 {% block zone_3 %}
 {{ input_tla(40, 320, 3) }}
 {{ input_zone_tokens_wider(10, 365, 3) }}
-{{ input_robot_tokens_wider(10, 400, 3) }}
 {{ input_present(105, 445, 3) }}
 {{ input_left_scoring_zone(53, 480, 3) }}
 {{ input_disqualified(65, 515, 3) }}
@@ -76,10 +72,21 @@
 <rect height="120" width="120" stroke="#000" y="240" x="240" stroke-width="1" fill="#f4f3ff" />
 {% endblock %}
 
+{% block svg_size %}height="750" width="600"{% endblock %}
+
 {% block zone_other %}
 <foreignObject x="250" y="250" height="100" width="100">
   <img src="{{ url_for('static', filename='images/logo.png') }}" />
 </foreignObject>
+
+<foreignObject x="200" y="610" height="100" width="200">
+  <h2 style="text-align: center;">Robot Tokens</h2>
+</foreignObject>
+
+{{ input_robot_tokens_wider(10, 660, 0) }}
+{{ input_robot_tokens_wider(310, 660, 1) }}
+{{ input_robot_tokens_wider(310, 710, 2) }}
+{{ input_robot_tokens_wider(10, 710, 3) }}
 {% endblock %}
 
 {% block valid_token_regex %}
