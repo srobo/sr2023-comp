@@ -30,7 +30,7 @@ teams:
   TLA2:
     disqualified: false
     left_scoring_zone: false
-    present: false
+    present: true
     robot_tokens: S
     zone: 2
   TLA3:

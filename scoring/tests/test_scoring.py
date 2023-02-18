@@ -241,6 +241,18 @@ class ScorerTests(unittest.TestCase):
         with self.assertRaises(InvalidScoresheetException):
             scorer.validate(None)
 
+    def test_has_tokens_but_absent(self):
+        self.teams_data = {
+            'ABC': {'zone': 0, 'present': False, 'left_scoring_zone': False},
+            'DEF': {'zone': 1, 'present': True, 'left_scoring_zone': False},
+        }
+        scorer = self.construct_scorer(
+            {'ABC': 'S'},
+            self.zone_tokens,
+        )
+        with self.assertRaises(InvalidScoresheetException):
+            scorer.validate(None)
+
 
 if __name__ == '__main__':
     unittest.main()

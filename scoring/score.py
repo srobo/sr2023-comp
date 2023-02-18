@@ -91,6 +91,19 @@ class Scorer:
                 "but are marked as leaving their zone",
             )
 
+        missing_but_has_token_teams = [
+            tla
+            for tla, info in self._teams_data.items()
+            if info['robot_tokens']
+            if not info.get('present', True)
+        ]
+
+        if missing_but_has_token_teams:
+            raise InvalidScoresheetException(
+                f"Teams {', '.join(missing_but_has_token_teams)} are not present "
+                "but are marked as having tokens in the robot",
+            )
+
 
 if __name__ == '__main__':
     import libproton
