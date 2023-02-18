@@ -16,7 +16,12 @@
 
 {% macro input_robot_tokens_wider(x, y, corner) %}
 <foreignObject x="{{ x }}" y="{{ y }}" width="120" height="30">
-  <label for="robot_tokens_{{ corner }}">Robot {{ corner }}</label>
+  <label
+    for="robot_tokens_{{ corner }}"
+    style="text-shadow: 0.5px 0.5px {{ corners[corner].colour }}, -0.5px 0.5px {{ corners[corner].colour }}, -0.5px -0.5px {{ corners[corner].colour }}, 0.5px -0.5px {{ corners[corner].colour }}"
+  >
+    Robot {{ corner }}
+  </label>
 </foreignObject>
 <foreignObject x="{{ x + 125 }}" y="{{ y }}" width="150" height="30">
   <input
