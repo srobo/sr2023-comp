@@ -198,6 +198,25 @@ class ScorerTests(unittest.TestCase):
         with self.assertRaises(InvalidScoresheetException):
             scorer.validate(None)
 
+    # Extra tokens
+
+    def test_too_many_tokens_single_zone(self):
+        self.zone_tokens[0] = 'G' * 5
+        scorer = self.construct_scorer(
+            {},
+            self.zone_tokens,
+        )
+        with self.assertRaises(InvalidScoresheetException):
+            scorer.validate(None)
+
+    def test_too_many_tokens_single_robot(self):
+        scorer = self.construct_scorer(
+            {'ABC': 'S' * 13},
+            self.zone_tokens,
+        )
+        with self.assertRaises(InvalidScoresheetException):
+            scorer.validate(None)
+
     # Tolerable input deviances
 
     def test_space_in_zone_tokens(self):
@@ -236,6 +255,18 @@ class ScorerTests(unittest.TestCase):
         }
         scorer = self.construct_scorer(
             {},
+            self.zone_tokens,
+        )
+        with self.assertRaises(InvalidScoresheetException):
+            scorer.validate(None)
+
+    def test_has_tokens_but_absent(self):
+        self.teams_data = {
+            'ABC': {'zone': 0, 'present': False, 'left_scoring_zone': False},
+            'DEF': {'zone': 1, 'present': True, 'left_scoring_zone': False},
+        }
+        scorer = self.construct_scorer(
+            {'ABC': 'S'},
             self.zone_tokens,
         )
         with self.assertRaises(InvalidScoresheetException):
