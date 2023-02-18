@@ -205,7 +205,7 @@ class ScorerTests(unittest.TestCase):
     # Extra tokens
 
     def test_too_many_tokens_single_zone(self):
-        self.zone_tokens[0] = 'G' * 5
+        self.zone_tokens[0] += 'G' * 5
         self.assertInvalidScoresheet(
             {},
             self.zone_tokens,
