@@ -27,6 +27,13 @@ class Scorer:
         self._teams_data = teams_data
         self._arena_data = arena_data
 
+        # Normalise whitespace upfront for consistency
+        for info in self._teams_data.values():
+            info['robot_tokens'] = info['robot_tokens'].replace(" ", "")
+
+        for info in self._arena_data.values():
+            info['tokens'] = info['tokens'].replace(" ", "")
+
     def calculate_scores(self):
         scores = {}
 
@@ -34,16 +41,8 @@ class Scorer:
             robot_tokens = info['robot_tokens']
             zone_tokens = self._arena_data[info['zone']]['tokens']
 
-            points = sum(
-                POINTS_IN_ZONE[y]
-                for x in zone_tokens
-                if (y := x.strip())
-            )
-            points += sum(
-                POINTS_IN_ROBOT[y]
-                for x in robot_tokens
-                if (y := x.strip())
-            )
+            points = sum(POINTS_IN_ZONE[x] for x in zone_tokens)
+            points += sum(POINTS_IN_ROBOT[x] for x in robot_tokens)
 
             if info.get('left_scoring_zone', False):
                 points += 1
@@ -59,7 +58,7 @@ class Scorer:
         zone_tokens = "".join(
             info['tokens'] for info in self._arena_data.values()
         )
-        tokens = (robot_tokens + zone_tokens).replace(" ", "")
+        tokens = robot_tokens + zone_tokens
 
         extra = set(tokens) - set(POINTS_IN_ZONE.keys())
         if extra:
