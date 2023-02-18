@@ -45,11 +45,17 @@ class ScorerTests(unittest.TestCase):
 
         self.assertEqual(expected_scores, actual_scores, "Wrong scores")
 
-    def assertInvalidScoresheet(self, robot_contents, zone_tokens):
+    def assertInvalidScoresheet(self, robot_contents, zone_tokens, *, code):
         scorer = self.construct_scorer(robot_contents, zone_tokens)
 
         with self.assertRaises(InvalidScoresheetException) as cm:
             scorer.validate(None)
+
+        self.assertEqual(
+            code,
+            cm.exception.code,
+            f"Wrong error code, message was: {cm.exception}",
+        )
 
     def setUp(self):
         self.teams_data = {
@@ -137,12 +143,14 @@ class ScorerTests(unittest.TestCase):
         self.assertInvalidScoresheet(
             {},
             self.zone_tokens,
+            code='invalid_token',
         )
 
     def test_invalid_robot_token_characters(self):
         self.assertInvalidScoresheet(
             {'ABC': 'X'},
             self.zone_tokens,
+            code='invalid_token',
         )
 
     def test_lower_case_zone_token_characters(self):
@@ -150,12 +158,14 @@ class ScorerTests(unittest.TestCase):
         self.assertInvalidScoresheet(
             {},
             self.zone_tokens,
+            code='invalid_token',
         )
 
     def test_lower_case_robot_token_characters(self):
         self.assertInvalidScoresheet(
             {'ABC': 's'},
             self.zone_tokens,
+            code='invalid_token',
         )
 
     def test_invalid_zone_token_characters_in_zone_without_robot(self):
@@ -163,6 +173,7 @@ class ScorerTests(unittest.TestCase):
         self.assertInvalidScoresheet(
             {},
             self.zone_tokens,
+            code='invalid_token',
         )
 
     def test_lower_case_zone_token_characters_in_zone_without_robot(self):
@@ -170,6 +181,7 @@ class ScorerTests(unittest.TestCase):
         self.assertInvalidScoresheet(
             {},
             self.zone_tokens,
+            code='invalid_token',
         )
 
     # Missing tokens
@@ -179,6 +191,7 @@ class ScorerTests(unittest.TestCase):
         self.assertInvalidScoresheet(
             {},
             self.zone_tokens,
+            code='too_few_tokens',
         )
 
     def test_less_than_26_tokens_seen_in_zone_without_robot(self):
@@ -186,6 +199,7 @@ class ScorerTests(unittest.TestCase):
         self.assertInvalidScoresheet(
             {},
             self.zone_tokens,
+            code='too_few_tokens',
         )
 
     # Extra tokens
@@ -195,12 +209,14 @@ class ScorerTests(unittest.TestCase):
         self.assertInvalidScoresheet(
             {},
             self.zone_tokens,
+            code='too_many_tokens',
         )
 
     def test_too_many_tokens_single_robot(self):
         self.assertInvalidScoresheet(
             {'ABC': 'S' * 13},
             self.zone_tokens,
+            code='too_many_tokens',
         )
 
     # Tolerable input deviances
@@ -242,6 +258,7 @@ class ScorerTests(unittest.TestCase):
         self.assertInvalidScoresheet(
             {},
             self.zone_tokens,
+            code='missing_but_moving',
         )
 
     def test_has_tokens_but_absent(self):
@@ -252,6 +269,7 @@ class ScorerTests(unittest.TestCase):
         self.assertInvalidScoresheet(
             {'ABC': 'S'},
             self.zone_tokens,
+            code='missing_but_has_tokens',
         )
 
 
