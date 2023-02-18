@@ -1,5 +1,19 @@
 {% extends "_update.html" %}
 
+{% macro js_tokens_summary(where, corner) %}
+  <div class="js-summary" style="display: flex; flex-wrap: nowrap; justify-content: space-evenly;">
+    <div>
+      B: <strong id="{{ where }}-bronze-{{ corner }}">&hellip;</strong>
+    </div>
+    <div>
+      S: <strong id="{{ where }}-silver-{{ corner }}">&hellip;</strong>
+    </div>
+    <div>
+      G: <strong id="{{ where }}-gold-{{ corner }}">&hellip;</strong>
+    </div>
+  </div>
+{% endmacro %}
+
 {% macro input_robot_tokens_wider(x, y, corner) %}
 <foreignObject x="{{ x }}" y="{{ y }}" width="120" height="30">
   <label for="robot_tokens_{{ corner }}">Robot {{ corner }}</label>
@@ -11,8 +25,12 @@
     id="robot_tokens_{{ corner }}"
     name="robot_tokens_{{ corner }}"
     value="{{ request.form.get('robot_tokens_{}'.format(corner)) | empty_if_none }}"
-    onkeyup="token_input_change(this);"
+    data-totals-template="robot-KIND-{{ corner }}"
+    onkeyup="custom_token_input_change(this);"
   />
+</foreignObject>
+<foreignObject x="{{ x + 125 }}" y="{{ y + 40 }}" width="150" height="30">
+  {{ js_tokens_summary('robot', corner) }}
 </foreignObject>
 {% endmacro %}
 
@@ -27,8 +45,12 @@
     id="tokens_{{ corner }}"
     name="tokens_{{ corner }}"
     value="{{ request.form.get('tokens_{}'.format(corner)) | empty_if_none }}"
-    onkeyup="token_input_change(this);"
+    data-totals-template="zone-KIND-{{ corner }}"
+    onkeyup="custom_token_input_change(this);"
   />
+</foreignObject>
+<foreignObject x="{{ x + 125 }}" y="{{ y + 40 }}" width="150" height="30">
+  {{ js_tokens_summary('zone', corner) }}
 </foreignObject>
 {% endmacro %}
 
@@ -72,7 +94,7 @@
 <rect height="120" width="120" stroke="#000" y="240" x="240" stroke-width="1" fill="#f4f3ff" />
 {% endblock %}
 
-{% block svg_size %}height="750" width="600"{% endblock %}
+{% block svg_size %}height="810" width="600"{% endblock %}
 
 {% block zone_other %}
 <foreignObject x="250" y="250" height="100" width="100">
@@ -85,10 +107,34 @@
 
 {{ input_robot_tokens_wider(10, 660, 0) }}
 {{ input_robot_tokens_wider(310, 660, 1) }}
-{{ input_robot_tokens_wider(310, 710, 2) }}
-{{ input_robot_tokens_wider(10, 710, 3) }}
+{{ input_robot_tokens_wider(310, 740, 2) }}
+{{ input_robot_tokens_wider(10, 740, 3) }}
 {% endblock %}
 
 {% block valid_token_regex %}
 var valid_token_regex = /^[BSG]*$/;
+{% endblock %}
+
+{% block script %}
+  {{ super() }}
+  <script type="text/javascript">
+    var custom_token_input_change = function(input) {
+      token_input_change(input);
+
+      var totals = {'B': 0, 'S': 0, 'G': 0};
+      Array.from(input.value).forEach(function (e, i) {
+        totals[e] = totals[e] + 1;
+      })
+
+      var totalsTemplate = input.dataset.totalsTemplate;
+      document.getElementById(totalsTemplate.replace('KIND', 'bronze')).innerText = totals['B'];
+      document.getElementById(totalsTemplate.replace('KIND', 'silver')).innerText = totals['S'];
+      document.getElementById(totalsTemplate.replace('KIND', 'gold')).innerText = totals['G'];
+    }
+
+    // tokenInputs loaded by the base template
+    for (var i = 0; i < tokenInputs.length; i++) {
+      custom_token_input_change(tokenInputs[i]);
+    }
+  </script>
 {% endblock %}
