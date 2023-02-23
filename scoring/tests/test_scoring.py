@@ -250,6 +250,31 @@ class ScorerTests(unittest.TestCase):
             code='too_many_tokens',
         )
 
+    def test_too_many_tokens_between_robots_and_zones(self):
+        # 5 Silver tokens in robot ABC
+        robot_tokens = {'ABC': 'S' * 6}
+        self.assertScores(
+            {'ABC': 105, 'DEF': 81},
+            robot_tokens,
+            self.zone_tokens,
+        )
+
+        # Total of 8 Silver tokens in zone 1
+        self.zone_tokens[0] += 'SSSS'
+        self.assertScores(
+            {'ABC': 129, 'DEF': 81},
+            {},
+            self.zone_tokens,
+        )
+
+        # While allowed separately, this combination isn't possible together
+        # (since tokens cannot be both in a zone and a robot).
+        self.assertInvalidScoresheet(
+            robot_tokens,
+            self.zone_tokens,
+            code='too_many_tokens_between_robots_and_zones',
+        )
+
     # Tolerable input deviances
 
     def test_space_in_zone_tokens(self):

@@ -55,6 +55,17 @@ class Scorer:
 
         return scores
 
+    def _max_counts(self, token_inputs):
+        max_counts = collections.Counter()
+
+        for tokens in token_inputs:
+            counts = collections.Counter(tokens)
+            for token_type in TOKEN_COUNTS.keys():
+                if counts[token_type] > max_counts[token_type]:
+                    max_counts[token_type] = counts[token_type]
+
+        return max_counts
+
     def validate(self, other_data):
         robot_token_inputs = {
             f'robot-{tla}': info['robot_tokens']
@@ -97,6 +108,22 @@ class Scorer:
                         f"Must be at most {max_count} got {count}",
                         code='too_many_tokens',
                     )
+
+        # While tokens can be shared between zones, they can't be shared between
+        # a zone and a robot. We can therefore catch some cases where there are
+        # too many tokens "overall", though with limited impact.
+        max_robot_counts = self._max_counts(robot_token_inputs.values())
+        max_zone_counts = self._max_counts(zone_token_inputs.values())
+        total_counts = max_robot_counts + max_zone_counts
+
+        for token_type, max_count in TOKEN_COUNTS.items():
+            count = total_counts[token_type]
+            if count > max_count:
+                raise InvalidScoresheetException(
+                    f"Too many {token_type} tokens seen overall. "
+                    f"Must be at most {max_count} got {count}",
+                    code='too_many_tokens_between_robots_and_zones',
+                )
 
         missing_but_moving_teams = [
             tla
