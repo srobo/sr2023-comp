@@ -1,8 +1,27 @@
 {% extends "_update.html" %}
 
+{% macro js_tokens_summary(where, corner) %}
+  <div class="js-summary" style="display: flex; flex-wrap: nowrap; justify-content: space-evenly;">
+    <div>
+      B: <strong id="{{ where }}-bronze-{{ corner }}">&hellip;</strong>
+    </div>
+    <div>
+      S: <strong id="{{ where }}-silver-{{ corner }}">&hellip;</strong>
+    </div>
+    <div>
+      G: <strong id="{{ where }}-gold-{{ corner }}">&hellip;</strong>
+    </div>
+  </div>
+{% endmacro %}
+
 {% macro input_robot_tokens_wider(x, y, corner) %}
 <foreignObject x="{{ x }}" y="{{ y }}" width="120" height="30">
-  <label for="robot_tokens_{{ corner }}">Robot Tokens</label>
+  <label
+    for="robot_tokens_{{ corner }}"
+    style="text-shadow: 0.5px 0.5px {{ corners[corner].colour }}, -0.5px 0.5px {{ corners[corner].colour }}, -0.5px -0.5px {{ corners[corner].colour }}, 0.5px -0.5px {{ corners[corner].colour }}"
+  >
+    Robot {{ corner }}
+  </label>
 </foreignObject>
 <foreignObject x="{{ x + 125 }}" y="{{ y }}" width="150" height="30">
   <input
@@ -11,24 +30,28 @@
     id="robot_tokens_{{ corner }}"
     name="robot_tokens_{{ corner }}"
     value="{{ request.form.get('robot_tokens_{}'.format(corner)) | empty_if_none }}"
-    onkeyup="token_input_change(this);"
+    onkeyup="custom_token_input_change(this);"
   />
 </foreignObject>
 {% endmacro %}
 
 {% macro input_zone_tokens_wider(x, y, corner) %}
-<foreignObject x="{{ x + 5 }}" y="{{ y }}" width="120" height="30">
-  <label for="tokens_{{ corner }}">Zone Tokens</label>
+<foreignObject x="{{ x + 5 }}" y="{{ y }}" width="70" height="30">
+  <label for="tokens_{{ corner }}">Tokens</label>
 </foreignObject>
-<foreignObject x="{{ x + 125 }}" y="{{ y }}" width="150" height="30">
+<foreignObject x="{{ x + 75 }}" y="{{ y }}" width="200" height="30">
   <input
     class="tokens"
     type="text"
     id="tokens_{{ corner }}"
     name="tokens_{{ corner }}"
     value="{{ request.form.get('tokens_{}'.format(corner)) | empty_if_none }}"
-    onkeyup="token_input_change(this);"
+    data-totals-template="zone-KIND-{{ corner }}"
+    onkeyup="custom_token_input_change(this);"
   />
+</foreignObject>
+<foreignObject x="{{ x + 75 }}" y="{{ y + 40 }}" width="200" height="30">
+  {{ js_tokens_summary('zone', corner) }}
 </foreignObject>
 {% endmacro %}
 
@@ -39,7 +62,6 @@
 {% block zone_0 %}
 {{ input_tla(70, 50, 0) }}
 {{ input_zone_tokens_wider(10, 95, 0) }}
-{{ input_robot_tokens_wider(10, 130, 0) }}
 {{ input_present(70, 175, 0) }}
 {{ input_left_scoring_zone(18, 210, 0) }}
 {{ input_disqualified(30, 245, 0) }}
@@ -48,7 +70,6 @@
 {% block zone_1 %}
 {{ input_tla(365, 50, 1) }}
 {{ input_zone_tokens_wider(310, 95, 1) }}
-{{ input_robot_tokens_wider(310, 130, 1) }}
 {{ input_present(445, 175, 1) }}
 {{ input_left_scoring_zone(393, 210, 1) }}
 {{ input_disqualified(405, 245, 1) }}
@@ -57,7 +78,6 @@
 {% block zone_2 %}
 {{ input_tla(380, 320, 2) }}
 {{ input_zone_tokens_wider(310, 365, 2) }}
-{{ input_robot_tokens_wider(310, 400, 2) }}
 {{ input_present(405, 445, 2) }}
 {{ input_left_scoring_zone(353, 480, 2) }}
 {{ input_disqualified(365, 515, 2) }}
@@ -66,7 +86,6 @@
 {% block zone_3 %}
 {{ input_tla(40, 320, 3) }}
 {{ input_zone_tokens_wider(10, 365, 3) }}
-{{ input_robot_tokens_wider(10, 400, 3) }}
 {{ input_present(105, 445, 3) }}
 {{ input_left_scoring_zone(53, 480, 3) }}
 {{ input_disqualified(65, 515, 3) }}
@@ -76,12 +95,93 @@
 <rect height="120" width="120" stroke="#000" y="240" x="240" stroke-width="1" fill="#f4f3ff" />
 {% endblock %}
 
+{% block svg_size %}height="850" width="600"{% endblock %}
+
 {% block zone_other %}
 <foreignObject x="250" y="250" height="100" width="100">
   <img src="{{ url_for('static', filename='images/logo.png') }}" />
+</foreignObject>
+
+<foreignObject x="200" y="610" height="100" width="200">
+  <h2 style="text-align: center;">Robot Tokens</h2>
+</foreignObject>
+
+{{ input_robot_tokens_wider(10, 660, 0) }}
+{{ input_robot_tokens_wider(310, 660, 1) }}
+{{ input_robot_tokens_wider(310, 710, 2) }}
+{{ input_robot_tokens_wider(10, 710, 3) }}
+
+<foreignObject x="50" y="750" height="100" width="500">
+  <h2 style="text-align: center;">Token over-counts</h2>
+  <div class="js-summary" style="display: flex; flex-wrap: nowrap; justify-content: space-evenly; max-width: 300px; margin: 0 auto;">
+    <div>
+      B: <strong id="bronze-overcount">&hellip;</strong>
+    </div>
+    <div>
+      S: <strong id="silver-overcount">&hellip;</strong>
+    </div>
+    <div>
+      G: <strong id="gold-overcount">&hellip;</strong>
+    </div>
+  </div>
+  <p style="text-align: center; margin-top: 0.3em;">
+    <small>These indicate a token in more than one robot or zone</small>
+  </p>
 </foreignObject>
 {% endblock %}
 
 {% block valid_token_regex %}
 var valid_token_regex = /^[BSG]*$/;
+{% endblock %}
+
+{% block script %}
+  {{ super() }}
+  <script type="text/javascript">
+    var allTotals = {};
+
+    var custom_token_input_change = function(input) {
+      token_input_change(input);
+
+      // Update the overall totals for this input
+      var inputTotals = {'B': 0, 'S': 0, 'G': 0};
+      Array.from(input.value).forEach(function (e, i) {
+        inputTotals[e] = inputTotals[e] + 1;
+      })
+
+      // A single input cannot have more tokens than are in the arena
+      if (
+        inputTotals['B'] > 20 ||
+        inputTotals['S'] > 12 ||
+        inputTotals['G'] > 4
+      ) {
+        input.className = 'invalid';
+      } else {
+        input.className = '';
+      }
+
+      var totalsTemplate = input.dataset.totalsTemplate;
+      if (totalsTemplate !== undefined) {
+        document.getElementById(totalsTemplate.replace('KIND', 'bronze')).innerText = inputTotals['B'];
+        document.getElementById(totalsTemplate.replace('KIND', 'silver')).innerText = inputTotals['S'];
+        document.getElementById(totalsTemplate.replace('KIND', 'gold')).innerText = inputTotals['G'];
+      }
+
+      // Update the overall totals
+      allTotals[input.id] = inputTotals;
+      var totals = {'B': 0, 'S': 0, 'G': 0};
+      Object.values(allTotals).forEach(function (x) {
+        totals['B'] = totals['B'] + x['B'];
+        totals['S'] = totals['S'] + x['S'];
+        totals['G'] = totals['G'] + x['G'];
+      })
+      document.getElementById('bronze-overcount').innerText = Math.max(0, totals['B'] - 20);
+      document.getElementById('silver-overcount').innerText = Math.max(0, totals['S'] - 12);
+      document.getElementById('gold-overcount').innerText = Math.max(0, totals['G'] - 4);
+    }
+
+    // tokenInputs loaded by the base template
+    for (var i = 0; i < tokenInputs.length; i++) {
+      custom_token_input_change(tokenInputs[i]);
+    }
+  </script>
 {% endblock %}
