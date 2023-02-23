@@ -1,205 +1,193 @@
 matches:
   0:
     main:
-    -
     - ABS
     - BPV
     - BRK
+    - CAG
   1:
     main:
-    -
-    - CAG
     - CAT
     - CCR
+    - CLY
+    - CNN
   2:
     main:
-    - CLY
-    - CNN
     - CRB
     - ELC
+    - GDC
+    - HAB
   3:
     main:
-    - GDC
-    - HAB
     - HAM
     - HEA
+    - HRS
+    - HSO
   4:
     main:
-    - HRS
-    - BPV
-    - HSO
     - HWM
+    - KEG
+    - LGS
+    - MAI
   5:
     main:
-    - HAB
-    - ELC
-    - KEG
-    - LGS
+    - PSC
+    - QMC
+    - RCE
+    - GDC
   6:
     main:
-    - HWM
-    - BRK
-    - HEA
-    - CNN
+    - KEG
+    - RGS
+    - RTS
+    - SCT
   7:
     main:
-    - MAI
-    - PSC
-    - QMC
-    - CAG
+    - CNN
+    - SHB
+    - SOG
+    - TFS
   8:
     main:
-    - HAM
-    -
-    - RCE
-    - RGS
+    - HAB
+    - HSO
+    - SCT
+    - HWM
   9:
     main:
-    - KEG
+    - BPV
     - CAT
-    - RTS
-    - SCT
+    - CCR
+    - HEA
   10:
     main:
-    - LGS
-    - GDC
-    - HRS
-    - SHB
+    - TFS
+    - RCE
+    - CNN
+    - QMC
   11:
     main:
-    - SOG
-    - HSO
-    - TFS
     - TLC
+    - PSC
+    - WMC
+    - ABS
   12:
     main:
-    - RTS
+    - ELC
+    - HAM
     - RGS
     - LGS
-    - WMC
   13:
     main:
-    - ABS
-    - HAM
-    - WGS
     - CLY
+    - RTS
+    - MAI
+    - SOG
   14:
     main:
-    - HEA
-    - WMC
-    - PSC
-    - WGS
-  15:
-    main:
+    - HRS
     - BRK
     - WGS
-    - SHB
-    - QMC
+    - CRB
+  15:
+    main:
+    - WMC
+    - SOG
+    - CAG
+    - TLC
   16:
     main:
+    - HEA
     - CRB
-    - RCE
-    - MAI
-    -
+    - HWM
+    - PSC
   17:
     main:
-    - SCT
-    - LGS
-    -
-    - HRS
+    - GDC
+    - TLC
+    - SHB
+    - WGS
   18:
     main:
-    - TLC
-    -
+    - BRK
+    - HRS
+    - ELC
     - WMC
-    - ABS
   19:
     main:
-    - TFS
-    - CLY
-    - SCT
-    - MAI
+    - RCE
+    - CAG
+    - HSO
+    - CCR
   20:
     main:
+    - RTS
     - WGS
-    - KEG
-    - HWM
-    - HSO
+    - QMC
+    - RGS
   21:
     main:
-    - CAG
-    - SCT
-    - GDC
-    - RCE
+    - SOG
+    - TFS
+    - HAB
+    - BPV
   22:
     main:
-    - BPV
-    - SOG
+    - SCT
     - CLY
+    - ABS
     - KEG
   23:
     main:
-    - RCE
-    - HWM
-    - CCR
-    - TFS
+    - MAI
+    - LGS
+    - HAM
+    - CAT
   24:
     main:
-    - CAT
-    - TLC
-    - BRK
-    - PSC
+    - WGS
+    - HAB
+    - KEG
+    - RCE
   25:
     main:
-    - CNN
-    - HRS
     - RGS
-    - RTS
+    - HWM
+    - PSC
+    - BRK
   26:
     main:
-    - CCR
     - SHB
+    - WMC
+    - HEA
     - ELC
-    - BPV
   27:
     main:
     - HSO
-    - MAI
-    -
-    - HAB
+    - GDC
+    - CAT
+    - HRS
   28:
     main:
-    - ELC
-    - CRB
-    - CAG
-    -
+    - CCR
+    - SCT
+    - TFS
+    - CLY
   29:
     main:
-    - SHB
-    - HEA
+    - LGS
     - CNN
-    - SOG
+    - TLC
+    - SHB
   30:
     main:
-    - RGS
-    - QMC
-    - TLC
-    - GDC
+    - CAG
+    - MAI
+    - BPV
+    - HAM
   31:
     main:
-    - WMC
-    - TFS
-    - SOG
-    - CRB
-  32:
-    main:
     - QMC
-    - CCR
-    - HAB
-    - CAT
-  33:
-    main:
-    - PSC
-    - RTS
     - ABS
-    - HAM
+    - CRB
+    - RTS
