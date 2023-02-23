@@ -45,6 +45,18 @@ class ScorerTests(unittest.TestCase):
 
         self.assertEqual(expected_scores, actual_scores, "Wrong scores")
 
+    def assertInvalidScoresheet(self, robot_contents, zone_tokens, *, code):
+        scorer = self.construct_scorer(robot_contents, zone_tokens)
+
+        with self.assertRaises(InvalidScoresheetException) as cm:
+            scorer.validate(None)
+
+        self.assertEqual(
+            code,
+            cm.exception.code,
+            f"Wrong error code, message was: {cm.exception}",
+        )
+
     def setUp(self):
         self.teams_data = {
             'ABC': {'zone': 0, 'present': True, 'left_scoring_zone': False},
@@ -99,6 +111,32 @@ class ScorerTests(unittest.TestCase):
             self.zone_tokens,
         )
 
+    def test_tokens_shared_several_zones(self):
+        self.zone_tokens[0] += 'G'
+        self.zone_tokens[2] += 'G'
+
+        self.assertScores(
+            {'ABC': 111, 'DEF': 81},
+            {},
+            self.zone_tokens,
+        )
+
+    def test_token_shared_two_robots(self):
+        # The Gold token which was in zone 0
+        self.zone_tokens[0] = self.zone_tokens[0].replace('G', '')
+
+        # is actually being held by both ABC and DEF
+        robot_tokens = {
+            'ABC': 'G',
+            'DEF': 'G',
+        }
+
+        self.assertScores(
+            {'ABC': 61, 'DEF': 91},
+            robot_tokens,
+            self.zone_tokens,
+        )
+
     def test_tokens_in_robot(self):
         self.zone_tokens[0] = 'B' * 4 + 'S' * 2
         self.assertScores(
@@ -128,94 +166,89 @@ class ScorerTests(unittest.TestCase):
 
     def test_invalid_zone_token_characters(self):
         self.zone_tokens[0] += 'X'
-        scorer = self.construct_scorer(
+        self.assertInvalidScoresheet(
             {},
             self.zone_tokens,
+            code='invalid_token',
         )
-        with self.assertRaises(InvalidScoresheetException):
-            scorer.validate(None)
 
     def test_invalid_robot_token_characters(self):
-        scorer = self.construct_scorer(
+        self.assertInvalidScoresheet(
             {'ABC': 'X'},
             self.zone_tokens,
+            code='invalid_token',
         )
-        with self.assertRaises(InvalidScoresheetException):
-            scorer.validate(None)
 
     def test_lower_case_zone_token_characters(self):
         self.zone_tokens[0] = 's'
-        scorer = self.construct_scorer(
+        self.assertInvalidScoresheet(
             {},
             self.zone_tokens,
+            code='invalid_token',
         )
-        with self.assertRaises(InvalidScoresheetException):
-            scorer.validate(None)
 
     def test_lower_case_robot_token_characters(self):
-        scorer = self.construct_scorer(
+        self.assertInvalidScoresheet(
             {'ABC': 's'},
             self.zone_tokens,
+            code='invalid_token',
         )
-        with self.assertRaises(InvalidScoresheetException):
-            scorer.validate(None)
 
     def test_invalid_zone_token_characters_in_zone_without_robot(self):
         self.zone_tokens[3] += 'X'
-        scorer = self.construct_scorer(
+        self.assertInvalidScoresheet(
             {},
             self.zone_tokens,
+            code='invalid_token',
         )
-        with self.assertRaises(InvalidScoresheetException):
-            scorer.validate(None)
 
     def test_lower_case_zone_token_characters_in_zone_without_robot(self):
         self.zone_tokens[3] += 's'
-        scorer = self.construct_scorer(
+        self.assertInvalidScoresheet(
             {},
             self.zone_tokens,
+            code='invalid_token',
         )
-        with self.assertRaises(InvalidScoresheetException):
-            scorer.validate(None)
 
     # Missing tokens
 
     def test_less_than_26_tokens_seen(self):
         self.zone_tokens[0] = 'S'
-        scorer = self.construct_scorer(
+        self.assertInvalidScoresheet(
             {},
             self.zone_tokens,
+            code='too_few_tokens',
         )
-        with self.assertRaises(InvalidScoresheetException):
-            scorer.validate(None)
 
     def test_less_than_26_tokens_seen_in_zone_without_robot(self):
         self.zone_tokens[3] = 'S'
-        scorer = self.construct_scorer(
+        self.assertInvalidScoresheet(
             {},
             self.zone_tokens,
+            code='too_few_tokens',
         )
-        with self.assertRaises(InvalidScoresheetException):
-            scorer.validate(None)
 
     # Extra tokens
 
     def test_too_many_tokens_single_zone(self):
-        self.zone_tokens[0] = 'G' * 5
-        scorer = self.construct_scorer(
+        # Remove all the other gold tokens so it's clear what we're testing
+        self.zone_tokens = {
+            x: y.replace('G', '') for x, y in self.zone_tokens.items()
+        }
+
+        self.zone_tokens[0] += 'G' * 5
+        self.assertInvalidScoresheet(
             {},
             self.zone_tokens,
+            code='too_many_tokens',
         )
-        with self.assertRaises(InvalidScoresheetException):
-            scorer.validate(None)
 
     def test_too_many_tokens_single_robot(self):
-        scorer = self.construct_scorer(
+        self.assertInvalidScoresheet(
             {'ABC': 'S' * 13},
             self.zone_tokens,
+            code='too_many_tokens',
         )
-        with self.assertRaises(InvalidScoresheetException):
-            scorer.validate(None)
 
     # Tolerable input deviances
 
@@ -253,24 +286,22 @@ class ScorerTests(unittest.TestCase):
             'ABC': {'zone': 0, 'present': False, 'left_scoring_zone': True},
             'DEF': {'zone': 1, 'present': True, 'left_scoring_zone': False},
         }
-        scorer = self.construct_scorer(
+        self.assertInvalidScoresheet(
             {},
             self.zone_tokens,
+            code='missing_but_moving',
         )
-        with self.assertRaises(InvalidScoresheetException):
-            scorer.validate(None)
 
     def test_has_tokens_but_absent(self):
         self.teams_data = {
             'ABC': {'zone': 0, 'present': False, 'left_scoring_zone': False},
             'DEF': {'zone': 1, 'present': True, 'left_scoring_zone': False},
         }
-        scorer = self.construct_scorer(
+        self.assertInvalidScoresheet(
             {'ABC': 'S'},
             self.zone_tokens,
+            code='missing_but_has_tokens',
         )
-        with self.assertRaises(InvalidScoresheetException):
-            scorer.validate(None)
 
 
 if __name__ == '__main__':

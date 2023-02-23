@@ -21,7 +21,9 @@ TOKEN_COUNTS = {
 
 
 class InvalidScoresheetException(Exception):
-    pass
+    def __init__(self, message: str, *, code: str) -> None:
+        super().__init__(message)
+        self.code = code
 
 
 class Scorer:
@@ -70,6 +72,7 @@ class Scorer:
             raise InvalidScoresheetException(
                 f"Invalid token type: {extra!r}. "
                 f"Must be one of: {', '.join(POINTS_IN_ZONE.keys())}",
+                code='invalid_token',
             )
 
         # Assume that tokens won't leave the arena (that happening is less
@@ -81,6 +84,7 @@ class Scorer:
                 raise InvalidScoresheetException(
                     f"Too few {token_type} tokens seen. "
                     f"Must be at least {min_count} got {count}",
+                    code='too_few_tokens',
                 )
 
         for name, tokens in all_inputs.items():
@@ -91,6 +95,7 @@ class Scorer:
                     raise InvalidScoresheetException(
                         f"Too many {token_type} tokens seen in {name}. "
                         f"Must be at most {max_count} got {count}",
+                        code='too_many_tokens',
                     )
 
         missing_but_moving_teams = [
@@ -104,6 +109,7 @@ class Scorer:
             raise InvalidScoresheetException(
                 f"Teams {', '.join(missing_but_moving_teams)} are not present "
                 "but are marked as leaving their zone",
+                code='missing_but_moving',
             )
 
         missing_but_has_token_teams = [
@@ -117,6 +123,7 @@ class Scorer:
             raise InvalidScoresheetException(
                 f"Teams {', '.join(missing_but_has_token_teams)} are not present "
                 "but are marked as having tokens in the robot",
+                code='missing_but_has_tokens',
             )
 
 
