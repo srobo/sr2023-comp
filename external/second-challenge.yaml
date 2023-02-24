@@ -27,6 +27,8 @@ scores:
     league_points: 8
   - team: RTS
     league_points: 8
+  - team: SHB
+    league_points: 8
   - team: TFS
     league_points: 8
   - team: WMC
