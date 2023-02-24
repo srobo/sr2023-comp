@@ -119,3 +119,10 @@ matches:
     - WMC
     - TFS
     - HSO
+  # Fake match to prevent pre-emptive display of the knockouts
+  20:
+    main:
+    - MAI
+    - WMC
+    - TFS
+    - HSO
