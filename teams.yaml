@@ -65,9 +65,6 @@ teams:
     QMC:
         name: Queen Mary's College
         rookie: false
-    RCE:
-        name: Ripley St Thomas Church of England Academy
-        rookie: true
     RGS:
         name: Royal Grammar School Guildford
         rookie: false
