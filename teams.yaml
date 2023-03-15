@@ -63,7 +63,7 @@ teams:
         name: Peter Symonds College
         rookie: false
     QMC:
-        name: Queen Mary's College
+        name: Queen Mary’s College
         rookie: false
     RGS:
         name: Royal Grammar School Guildford
@@ -84,7 +84,7 @@ teams:
         name: Tiffin School
         rookie: true
     TLC:
-        name: The Ladies' College, Guernsey
+        name: The Ladies’ College, Guernsey
         rookie: false
     WGS:
         name: Wisbech Grammar School
