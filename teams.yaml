@@ -86,9 +86,9 @@ teams:
     TLC:
         name: The Ladies' College, Guernsey
         rookie: false
-    WMC:
-        name: Westminster City School
-        rookie: true
     WGS:
         name: Wisbech Grammar School
         rookie: false
+    WMC:
+        name: Westminster City School
+        rookie: true

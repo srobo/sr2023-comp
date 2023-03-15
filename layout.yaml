@@ -32,8 +32,8 @@ teams:
       - SOG
       - TFS
       - TLC
-      - WMC
       - WGS
+      - WMC
   - name: level-3-north
     display_name: SUSU Level 3 North
     teams: []
