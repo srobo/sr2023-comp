@@ -14,9 +14,6 @@ teams:
     CAT:
         name: CATS College Cambridge
         rookie: false
-    CCR:
-        name: Cirencester College
-        rookie: false
     CLY:
         name: The College of Richard Collyer
         rookie: false
