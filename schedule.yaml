@@ -1,8 +1,8 @@
 match_slot_lengths:
   pre: 60
   match: 150
-  post: 30
-  total: 240
+  post: 60
+  total: 270
 #
 # Various staging related times, in seconds before the actual match start
 staging:
@@ -30,11 +30,9 @@ delays: []
 match_periods:
   league:
   - start_time: 2023-02-25 13:10:00+00:00
-    # Technically we wanted to stop at 15:00, but allowing for some overrun we
-    # need to extend beyond that. Claim to end at a point after the last match
-    # has actually started so we force the next match into the next period we
-    # claim to finish a bit earlier.
-    end_time: 2023-02-25 14:28:00+00:00
+    # Allow enough time for the virtual competition matches but not enough to
+    # also pick up those from the physical competition.
+    end_time: 2023-02-25 14:40:00+00:00
     max_end_time: 2023-02-25 15:00:00+00:00
     description: Virtual league
 
@@ -70,7 +68,10 @@ league:
   # Extra spacing before an arbitrary set of matches
   # This value is ignored for matches which occur at the start of a period
   # since no additional time is needed there.
-  extra_spacing: []
+  extra_spacing:
+    # Force the first physical match into the right period
+    - match_numbers: '20'
+      duration: 600
 #
 knockout:
   round_spacing: 300 # Delay between knockout rounds
