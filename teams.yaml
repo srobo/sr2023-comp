@@ -68,6 +68,7 @@ teams:
     RTS:
         name: Ruthin School
         rookie: false
+        dropped_out_after: 19
     SCT:
         name: Silcoates School
         rookie: false
