@@ -119,10 +119,423 @@ matches:
     - WMC
     - TFS
     - HSO
-  # Fake match to prevent pre-emptive display of the knockouts
   20:
     main:
+    - PSC
+    - RGS
+    - BRK
+    - CAT
+  21:
+    main:
+    - TLC
     - MAI
-    - WMC
-    - TFS
+    - HWM
+    - QMC
+  22:
+    main:
+    - KEG
+    - CAG
+    - SHB
     - HSO
+  23:
+    main:
+    - ELC
+    - GDC
+    - TFS
+    - HEA
+  24:
+    main:
+    - LGS
+    - SOG
+    - CLY
+    - ABS
+  25:
+    main:
+    - WGS
+    - BPV
+    - HAB
+    - CNN
+  26:
+    main:
+    - HAM
+    - HRS
+    - CRB
+    - WMC
+  27:
+    main:
+    - RGS
+    - CLY
+    - TLC
+    - SHB
+  28:
+    main:
+    - HSO
+    - ELC
+    - BRK
+    - LGS
+  29:
+    main:
+    - HRS
+    - CNN
+    - HWM
+    - TFS
+  30:
+    main:
+    - GDC
+    - ABS
+    - CAG
+    - HAM
+  31:
+    main:
+    - SOG
+    - CAT
+    - WGS
+    - WMC
+  32:
+    main:
+    - QMC
+    - HEA
+    - HAB
+    - KEG
+  33:
+    main:
+    - MAI
+    - CRB
+    - PSC
+    - BPV
+  34:
+    main:
+    - HSO
+    - SHB
+    - CNN
+    - CAT
+  35:
+    main:
+    - HRS
+    - WGS
+    - TFS
+    - LGS
+  36:
+    main:
+    - BRK
+    - ELC
+    - CAG
+    - QMC
+  37:
+    main:
+    - MAI
+    - HAB
+    - GDC
+    - WMC
+  38:
+    main:
+    - RGS
+    - CRB
+    - HEA
+    - PSC
+  39:
+    main:
+    - HWM
+    - ABS
+    - SOG
+    - KEG
+  40:
+    main:
+    - HAM
+    - BPV
+    - CLY
+    - TLC
+  41:
+    main:
+    - CNN
+    - CAG
+    - HRS
+    - HAB
+  42:
+    main:
+    - HEA
+    - BRK
+    - LGS
+    - TFS
+  43:
+    main:
+    - SHB
+    - QMC
+    - ABS
+    - HWM
+  44:
+    main:
+    - KEG
+    - HAM
+    - CRB
+    - PSC
+  45:
+    main:
+    - BPV
+    - HSO
+    - CLY
+    - WGS
+  46:
+    main:
+    - TLC
+    - WMC
+    - MAI
+    - SOG
+  47:
+    main:
+    - ELC
+    - CAT
+    - RGS
+    - GDC
+  48:
+    main:
+    - TFS
+    - QMC
+    - CRB
+    - CAG
+  49:
+    main:
+    - HEA
+    - WGS
+    - ABS
+    - HSO
+  50:
+    main:
+    - WMC
+    - TLC
+    - HWM
+    - BRK
+  51:
+    main:
+    - BPV
+    - CLY
+    - SOG
+    - HAB
+  52:
+    main:
+    - CNN
+    - MAI
+    - CAT
+    - RGS
+  53:
+    main:
+    - PSC
+    - GDC
+    - HAM
+    - ELC
+  54:
+    main:
+    - LGS
+    - SHB
+    - KEG
+    - HRS
+  55:
+    main:
+    - CNN
+    - HWM
+    - QMC
+    - SOG
+  56:
+    main:
+    - WGS
+    - HAB
+    - WMC
+    - CRB
+  57:
+    main:
+    - ABS
+    - PSC
+    - TLC
+    - ELC
+  58:
+    main:
+    - BRK
+    - CAT
+    - MAI
+    - BPV
+  59:
+    main:
+    - CAG
+    - HEA
+    - HSO
+    - HRS
+  60:
+    main:
+    - CLY
+    - TFS
+    - KEG
+    - LGS
+  61:
+    main:
+    - GDC
+    - RGS
+    - HAM
+    - SHB
+  62:
+    main:
+    - HWM
+    - WGS
+    - TLC
+    - CAG
+  63:
+    main:
+    - HAB
+    - HSO
+    - PSC
+    - HEA
+  64:
+    main:
+    - WMC
+    - LGS
+    - ELC
+    - CLY
+  65:
+    main:
+    - ABS
+    - KEG
+    - MAI
+    - HRS
+  66:
+    main:
+    - CRB
+    - BRK
+    - QMC
+    - GDC
+  67:
+    main:
+    - CAT
+    - RGS
+    - BPV
+    - HAM
+  68:
+    main:
+    - TFS
+    - SOG
+    - SHB
+    - CNN
+  69:
+    main:
+    - HEA
+    - QMC
+    - ELC
+    - TLC
+  70:
+    main:
+    - CLY
+    - HSO
+    - GDC
+    - CRB
+  71:
+    main:
+    - LGS
+    - TFS
+    - CAT
+    - PSC
+  72:
+    main:
+    - SOG
+    - HAM
+    - BPV
+    - ABS
+  73:
+    main:
+    - HWM
+    - BRK
+    - RGS
+    - CNN
+  74:
+    main:
+    - WMC
+    - SHB
+    - HRS
+    - WGS
+  75:
+    main:
+    - HAB
+    - CAG
+    - KEG
+    - MAI
+  76:
+    main:
+    - BPV
+    - HWM
+    - LGS
+    - ELC
+  77:
+    main:
+    - CAT
+    - CRB
+    - SOG
+    - GDC
+  78:
+    main:
+    - CLY
+    - HRS
+    - HEA
+    - WGS
+  79:
+    main:
+    - TFS
+    - KEG
+    - CNN
+    - RGS
+  80:
+    main:
+    - CAG
+    - TLC
+    - HAM
+    - MAI
+  81:
+    main:
+    - HAB
+    - PSC
+    - ABS
+    - SHB
+  82:
+    main:
+    - QMC
+    - WMC
+    - HSO
+    - BRK
+  83:
+    main:
+    - CRB
+    - LGS
+    - HEA
+    - TLC
+  84:
+    main:
+    - SOG
+    - HRS
+    - RGS
+    - MAI
+  85:
+    main:
+    - CAT
+    - HAM
+    - WGS
+    - HAB
+  86:
+    main:
+    - SHB
+    - TFS
+    - WMC
+    - CAG
+  87:
+    main:
+    - QMC
+    - KEG
+    - ELC
+    - BPV
+  88:
+    main:
+    - BRK
+    - CNN
+    - HSO
+    - CLY
+  89:
+    main:
+    - ABS
+    - PSC
+    - GDC
+    - HWM
