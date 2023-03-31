@@ -5,38 +5,40 @@ teams:
       - PSC
       - RGS
       - BRK
-      - RTS
-      - TLC
       - CAT
-      - HEA
+      - TLC
       - MAI
+      - HWM
+      - QMC
       - KEG
       - CAG
       - SHB
+      - HSO
 
   - name: level-3-north
     display_name: SUSU Level 3 North
     teams:
-      - HRS
       - ELC
-      - SCT
+      - GDC
       - TFS
-      - QMC
+      - HEA
       - LGS
       - SOG
       - CLY
       - ABS
+      - WGS
       - BPV
 
   - name: level-3-south
     display_name: SUSU Level 3 South
     teams:
       - HAB
-      - WGS
-      - HSO
       - CNN
       - HAM
-      - GDC
-      - HWM
+      - HRS
       - CRB
       - WMC
+
+      # Dropped out before the competition
+      - RTS
+      - SCT
