@@ -1,4 +1,5 @@
 # fully qualified names of machines which have deployments which
 # support triggered updates
 deployments:
+  - compbox.sr
   - srcomp.studentrobotics.org
