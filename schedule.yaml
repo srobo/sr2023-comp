@@ -25,7 +25,9 @@ staging:
 #
 timezone: Europe/London
 #
-delays: []
+delays:
+- delay: 270
+  time: 2023-04-01 13:34:30+01:00
 #
 match_periods:
   league:
@@ -72,8 +74,8 @@ league:
   # since no additional time is needed there.
   extra_spacing:
     # Force the first physical match into the right period
-    - match_numbers: '20'
-      duration: 600
+  - match_numbers: '20'
+    duration: 600
 #
 knockout:
   round_spacing: 300 # Delay between knockout rounds
@@ -81,4 +83,4 @@ knockout:
   single_arena:
     rounds: 0
     arenas:
-      - main
+    - main
