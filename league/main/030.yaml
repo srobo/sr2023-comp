@@ -1,0 +1,38 @@
+arena_id: main
+arena_zones:
+  0:
+    tokens: BBBBBSSSG
+  1:
+    tokens: BBBBBSSSG
+  2:
+    tokens: BBBBBSSSG
+  3:
+    tokens: BBBBBBSSSG
+  other:
+    tokens: ''
+match_number: 30
+teams:
+  ABS:
+    disqualified: false
+    left_scoring_zone: true
+    present: true
+    robot_tokens: ''
+    zone: 1
+  CAG:
+    disqualified: false
+    left_scoring_zone: false
+    present: false
+    robot_tokens: ''
+    zone: 2
+  GDC:
+    disqualified: false
+    left_scoring_zone: false
+    present: false
+    robot_tokens: ''
+    zone: 0
+  HAM:
+    disqualified: false
+    left_scoring_zone: true
+    present: true
+    robot_tokens: ''
+    zone: 3
