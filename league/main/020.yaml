@@ -14,7 +14,7 @@ match_number: 20
 teams:
   BRK:
     disqualified: false
-    left_scoring_zone: false
+    left_scoring_zone: true
     present: true
     robot_tokens: ''
     zone: 2
