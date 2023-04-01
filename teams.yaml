@@ -11,6 +11,7 @@ teams:
     CAG:
         name: Calday Grange Grammar School
         rookie: false
+        dropped_out_after: 57
     CAT:
         name: CATS College Cambridge
         rookie: false
