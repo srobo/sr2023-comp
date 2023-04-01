@@ -49,7 +49,7 @@ match_periods:
     description: Saturday league, afternoon
 
 #
-  - start_time: 2023-04-02 09:30:00+01:00
+  - start_time: 2023-04-02 10:00:00+01:00
     # Hard stop at 12:45 for the group photo, so we need to ensure that the last
     # match doesn't overrun too far into that. These times control the start
     # times of matches, so we need to mark the end time slightly before that
