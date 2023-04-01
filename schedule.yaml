@@ -78,6 +78,8 @@ league:
     # Force the first physical match into the right period
   - match_numbers: '20'
     duration: 600
+  - match_numbers: '44,45'
+    duration: 30
 #
 knockout:
   round_spacing: 300 # Delay between knockout rounds
