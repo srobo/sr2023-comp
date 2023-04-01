@@ -29,6 +29,8 @@ delays:
 - delay: 270
   time: 2023-04-01 13:34:30+01:00
 #
+- delay: 270
+  time: 2023-04-01 15:00:00+01:00
 match_periods:
   league:
   - start_time: 2023-02-25 13:10:00+00:00
