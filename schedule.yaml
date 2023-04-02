@@ -111,7 +111,7 @@ league:
 #
 knockout:
   round_spacing: 300 # Delay between knockout rounds
-  final_delay: 300   # Extra delay before the finals
+  final_delay: 180   # Extra delay before the finals
   single_arena:
     rounds: 0
     arenas:
