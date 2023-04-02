@@ -106,7 +106,7 @@ league:
     # Force the first physical match into the right period
   - match_numbers: '20'
     duration: 600
-  - match_numbers: '44,45,46'
+  - match_numbers: '44,45,46,70,71,72'
     duration: 30
 #
 knockout:
