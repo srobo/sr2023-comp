@@ -1,0 +1,38 @@
+arena_id: main
+arena_zones:
+  0:
+    tokens: GGSSSBBBBBBBBB
+  1:
+    tokens: SSSB
+  2:
+    tokens: GGSSSBBBBB
+  3:
+    tokens: SSSBBBBB
+  other:
+    tokens: ''
+match_number: 92
+teams:
+  ABS:
+    disqualified: false
+    left_scoring_zone: true
+    present: true
+    robot_tokens: ''
+    zone: 2
+  CNN:
+    disqualified: false
+    left_scoring_zone: false
+    present: false
+    robot_tokens: ''
+    zone: 1
+  HEA:
+    disqualified: false
+    left_scoring_zone: true
+    present: true
+    robot_tokens: ''
+    zone: 3
+  RGS:
+    disqualified: false
+    left_scoring_zone: true
+    present: true
+    robot_tokens: ''
+    zone: 0
