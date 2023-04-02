@@ -59,8 +59,6 @@ match_periods:
     description: Sunday league, morning
 
 #
-# There is a group photograph scheduled for 15:00
-#
   knockout:
   - start_time: 2023-04-02 13:30:00+01:00
     end_time: 2023-04-02 14:55:00+01:00
