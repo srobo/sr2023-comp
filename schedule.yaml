@@ -64,6 +64,8 @@ delays:
 # Final
 - delay: 30
   time: 2023-04-02 15:04:00+01:00
+- delay: 120
+  time: 2023-04-02 14:53:33+01:00
 match_periods:
   league:
   - start_time: 2023-02-25 13:10:00+00:00
@@ -106,7 +108,7 @@ league:
     # Force the first physical match into the right period
   - match_numbers: '20'
     duration: 600
-  - match_numbers: '44,45,46,70,71,72'
+  - match_numbers: 44,45,46,70,71,72
     duration: 30
 #
 knockout:
