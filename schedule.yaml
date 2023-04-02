@@ -93,9 +93,9 @@ match_periods:
 
 #
   knockout:
-  - start_time: 2023-04-02 13:30:00+01:00
-    end_time: 2023-04-02 15:15:00+01:00
-    max_end_time: 2023-04-02 15:20:00+01:00
+  - start_time: 2023-04-02 13:45:00+01:00
+    end_time: 2023-04-02 15:25:00+01:00
+    max_end_time: 2023-04-02 15:40:00+01:00
     description: Knockouts
 
 league:
