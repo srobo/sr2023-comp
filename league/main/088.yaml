@@ -20,7 +20,7 @@ teams:
     zone: 0
   CLY:
     disqualified: false
-    left_scoring_zone: false
+    left_scoring_zone: true # override, team were given a dead battery by helpdesk
     present: true
     robot_tokens: ''
     zone: 3
