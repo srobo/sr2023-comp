@@ -1,0 +1,38 @@
+arena_id: main
+arena_zones:
+  0:
+    tokens: GSSSSBBBBBBBB
+  1:
+    tokens: GSSBBBBBB
+  2:
+    tokens: GSSSBBB
+  3:
+    tokens: GSSSBBBB
+  other:
+    tokens: ''
+match_number: 87
+teams:
+  BPV:
+    disqualified: false
+    left_scoring_zone: true
+    present: true
+    robot_tokens: ''
+    zone: 3
+  ELC:
+    disqualified: false
+    left_scoring_zone: true
+    present: true
+    robot_tokens: ''
+    zone: 2
+  KEG:
+    disqualified: false
+    left_scoring_zone: true
+    present: true
+    robot_tokens: ''
+    zone: 1
+  QMC:
+    disqualified: false
+    left_scoring_zone: true
+    present: true
+    robot_tokens: ''
+    zone: 0
