@@ -66,10 +66,6 @@ match_periods:
     end_time: 2023-04-02 14:55:00+01:00
     description: Knockouts
 
-# Scheduled time for the finals tie-breaker, if any
-# This is an absolute value and ignores the delay values
-tiebreaker: 2023-04-02 15:00:00+01:00
-
 league:
   # Extra spacing before an arbitrary set of matches
   # This value is ignored for matches which occur at the start of a period
