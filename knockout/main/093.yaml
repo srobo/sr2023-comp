@@ -1,0 +1,32 @@
+arena_id: main
+arena_zones:
+  0:
+    tokens: GSSSBBBBBBB
+  1:
+    tokens: GGSSSBBB
+  2:
+    tokens: GSSSBBBBBBB
+  3:
+    tokens: GSSBBB
+  other:
+    tokens: ''
+match_number: 93
+teams:
+  CAT:
+    disqualified: false
+    left_scoring_zone: true
+    present: true
+    robot_tokens: S
+    zone: 2
+  HSO:
+    disqualified: false
+    left_scoring_zone: true
+    present: true
+    robot_tokens: ''
+    zone: 1
+  WGS:
+    disqualified: false
+    left_scoring_zone: true
+    present: true
+    robot_tokens: ''
+    zone: 0
